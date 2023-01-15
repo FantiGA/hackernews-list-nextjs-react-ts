@@ -4,16 +4,16 @@
  */
 
 module.exports = {
-  printWidth: 90,
+  printWidth: 80,
   tabWidth: 2,
   useTabs: false,
   semi: true,
-  singleQuote: true,
+  singleQuote: false,
   quoteProps: 'as-needed',
   jsxSingleQuote: false,
   trailingComma: 'es5',
   bracketSpacing: true,
-  // jsxBracketSameLine: false,
+  bracketSameLine: false,
   arrowParens: 'always',
   rangeStart: 0,
   rangeEnd: Infinity,
@@ -26,4 +26,5 @@ module.exports = {
   vueIndentScriptAndStyle: false,
   endOfLine: 'lf',
   embeddedLanguageFormatting: 'auto',
+  singleAttributePerLine: false,
 };

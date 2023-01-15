@@ -1,0 +1,258 @@
+/** Visit https://aka.ms/tsconfig.json to read more about this file */
+{
+  /**
+   * Specifies an allowlist of files to include in the program.
+   * An error occurs if any of the files can’t be found.
+   */
+  // "files": [],
+  /**
+   * The value of `extends` is a string which contains a path to another configuration file to inherit from.
+   * The path may use Node.js style resolution.
+   */
+  // "extends": "",
+  /**
+   * These options make up the bulk of TypeScript’ s configuration and it covers how the language should work.
+   */
+  "compilerOptions": {
+    /**
+     * ------------------------------------------------
+     * Type Checking
+     * ------------------------------------------------
+     */
+    // "allowUnreachableCode": true,
+    // "allowUnusedLabels": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
+
+    /**
+     * ------------------------------------------------
+     * Modules
+     * ------------------------------------------------
+     */
+    // "allowUmdGlobalAccess": true,
+    "baseUrl": ".",
+    "module": "esnext",
+    "moduleResolution": "node",
+    // "moduleSuffixes": [],
+    // "noResolve": true,
+    "paths": {
+      "@/*": ["./*"],
+      // "@/*": ["src/*"],
+      // "@components/*": ["src/components/*"]
+      // "@scss/*": ["src/scss/*"],
+      // "@utils/*": ["src/utils/*"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": "./",
+    // "rootDirs": [],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    // "types": [],
+
+    /**
+     * ------------------------------------------------
+     * Emit
+     * ------------------------------------------------
+     */
+    // "declaration": true,
+    // "declarationDir": "./",
+    // "declarationMap": true,
+    // "downlevelIteration": true,
+    // "emitBOM": true,
+    // "emitDeclarationOnly": true,
+    // "importHelpers": true,
+    // "importsNotUsedAsValues": "remove",
+    // "inlineSourceMap": true,
+    // "inlineSources": true,
+    // "mapRoot": "",
+    // "newLine": "crlf",
+    "noEmit": true,
+    // "noEmitHelpers": true,
+    "noEmitOnError": true,
+    // "outDir": "./",
+    // "outFile": "./",
+    // "preserveConstEnums": true,
+    // "preserveValueImports": true,
+    "removeComments": true,
+    "sourceMap": true,
+    // "sourceRoot": "",
+    // "stripInternal": true,
+
+    /**
+     * ------------------------------------------------
+     * JavaScript Support
+     * ------------------------------------------------
+     */
+    "allowJs": true,
+    // "checkJs": true,
+    // "maxNodeModuleJsDepth": 1,
+
+    /**
+     * ------------------------------------------------
+     * Editor Support
+     * ------------------------------------------------
+     */
+    // "disableSizeLimit": false,
+    // "plugins": [],
+
+    /**
+     * ------------------------------------------------
+     * Interop Constraints
+     * ------------------------------------------------
+     */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    // "preserveSymlinks": true,
+
+    /**
+     * ------------------------------------------------
+     * Backwards Compatibility
+     * ------------------------------------------------
+     */
+    // "noImplicitUseStrict": false,
+    // "noStrictGenericChecks": false,
+    // "suppressExcessPropertyErrors": false,
+    // "suppressImplicitAnyIndexErrors": false,
+
+    /**
+     * ------------------------------------------------
+     * Language and Environment
+     * ------------------------------------------------
+     */
+    // "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "jsx": "preserve",
+    // "jsxFactory": "",
+    // "jsxFragmentFactory": "",
+    // "jsxImportSource": "",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "moduleDetection": "auto",
+    // "noLib": true,
+    // "reactNamespace": "",
+    "target": "es2017",
+    "useDefineForClassFields": true,
+
+    /**
+     * ------------------------------------------------
+     * Compiler Diagnostics
+     * ------------------------------------------------
+     */
+    "diagnostics": true,
+    // "explainFiles": false,
+    "extendedDiagnostics": true,
+    // "generateCpuProfile": "profile.cpuprofile",
+    "listEmittedFiles": true,
+    "listFiles": true,
+    "traceResolution": true,
+
+    /**
+     * ------------------------------------------------
+     * Projects
+     * ------------------------------------------------
+     */
+    // "composite": true,
+    // "disableReferencedProjectLoad": true,
+    // "disableSolutionSearching": true,
+    // "disableSourceOfProjectReferenceRedirect": true,
+    "incremental": true,
+    "tsBuildInfoFile": "./",
+
+    /**
+     * ------------------------------------------------
+     * Output Formatting
+     * ------------------------------------------------
+     */
+    // "noErrorTruncation": false,
+    "preserveWatchOutput": true,
+    "pretty": true,
+
+    /**
+     * ------------------------------------------------
+     * Completeness
+     * ------------------------------------------------
+     */
+    // "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+
+    /**
+     * ------------------------------------------------
+     * Command Line
+     * ------------------------------------------------
+     */
+
+    /**
+     * ------------------------------------------------
+     * Watch Options
+     * ------------------------------------------------
+     */
+    // "assumeChangesOnlyAffectDirectDependencies": true,
+  },
+  /**
+   * Specifies an array of filenames or patterns to include in the program.
+   * These filenames are resolved relative to the directory containing the `tsconfig.json` file.
+   */
+  "include": [
+    // "src/**/*",
+    "types/*",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  /**
+   * Specifies an array of filenames or patterns that should be skipped when resolving include.
+   */
+  "exclude": [
+    "node_modules"
+  ],
+  /**
+   * Project references are a way to structure your TypeScript programs into smaller pieces.
+   * Using Project References can greatly improve build and editor interaction times,
+   * enforce logical separation between components, and organize your code in new and improved ways.
+   */
+  // "references": [],
+  /**
+   * You can configure the how TypeScript `--watch` works.
+   * This section is mainly for handling case where `fs.watch` and `fs.watchFile` have additional constraints like on Linux.
+   */
+  "watchOptions": {
+    "watchFile": "useFsEvents",
+    "watchDirectory": "useFsEvents",
+    "fallbackPolling": "dynamicpriority",
+    "synchronousWatchDirectory": true,
+    "excludeDirectories": ["node_modules", "build", "dist"],
+    // "excludeFiles": [],
+  },
+  /**
+   * Type Acquisition is only important for JavaScript projects.
+   * In TypeScript projects you need to include the types in your projects explicitly.
+   * However, for JavaScript projects, the TypeScript tooling will download types for your modules in the background and outside of your node_modules folder.
+   */
+  // "typeAcquisition": {
+  //   "enable": false,
+  //   "include": [],
+  //   "exclude": [],
+  //   "disableFilenameBasedTypeAcquisition": true,
+  // },
+}
