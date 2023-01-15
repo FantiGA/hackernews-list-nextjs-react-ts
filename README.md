@@ -40,7 +40,7 @@ To display HackerNews info as list.
 ### Example
 
 - top stories api
-https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
+  > https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
 - fetch individual story
-https://hacker-news.firebaseio.com/v0/item/{itemId}.json?print=pretty
-https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+  > https://hacker-news.firebaseio.com/v0/item/{itemId}.json?print=pretty
+  > https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty

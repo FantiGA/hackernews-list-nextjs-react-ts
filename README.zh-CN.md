@@ -29,7 +29,7 @@
 
 ### 技术要求
 
-1. 使用 `React`。如果愿意，您可以使用您选择的任何元框架（例如 Next.js）。
+1. 使用 `React`。如果愿意，您可以使用您选择的任何元框架（例如 `Next.js`）。
 2. 使用 `TypeScript`。
 3. **不要**使用 UI 库（例如 `Material UI`, `Bootstrap`）。如果您愿意，可以使用 CSS 框架（例如，`styled-component`、`css-in-module`、`Tailwind` 等）。
 
@@ -40,7 +40,7 @@
 ### 例子
 
 - 头条新闻
-https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
+  > https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
 - 获取单个新闻
-https://hacker-news.firebaseio.com/v0/item/{itemId}.json?print=pretty
-https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+  > https://hacker-news.firebaseio.com/v0/item/{itemId}.json?print=pretty
+  > https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty

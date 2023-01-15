@@ -24,7 +24,7 @@
     "alwaysStrict": true,
     "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -51,11 +51,11 @@
     // "moduleSuffixes": [],
     // "noResolve": true,
     "paths": {
-      "@/*": ["./*"],
+      "@*": ["./*"],
       // "@/*": ["src/*"],
-      // "@components/*": ["src/components/*"]
-      // "@scss/*": ["src/scss/*"],
-      // "@utils/*": ["src/utils/*"]
+      // "@components/*": ["./components/*"],
+      // "@scss/*": ["./scss/*"],
+      // "@utils/*": ["./utils/*"],
     },
     "resolveJsonModule": true,
     "rootDir": "./",
