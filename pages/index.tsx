@@ -1,15 +1,16 @@
 /*
  * @Author: fantiga
  * @Date: 2023-01-15 19:45:05
- * @LastEditTime: 2023-01-15 21:23:52
+ * @LastEditTime: 2023-01-21 17:30:58
  * @LastEditors: fantiga
  * @FilePath: /hackernews-list-react-ts/pages/index.tsx
  */
 
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import styled from "styled-components";
 import Header from "@components/Header";
 import List from "@components/List";
+import Loading from "@components/Loading";
 
 const Container = styled.div`
   display: flex;
@@ -34,7 +35,9 @@ const Home: FC = () => {
       <Container>
         <Wrapper>
           <TitleUI>HackerNews List React TS</TitleUI>
-          <List />
+          <Suspense fallback={<Loading />}>
+            <List limit={100} />
+          </Suspense>
         </Wrapper>
       </Container>
     </>
