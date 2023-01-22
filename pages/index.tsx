@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-01-15 19:45:05
- * @LastEditTime: 2023-01-21 17:30:58
+ * @LastEditTime: 2023-01-22 19:20:09
  * @LastEditors: fantiga
  * @FilePath: /hackernews-list-react-ts/pages/index.tsx
  */

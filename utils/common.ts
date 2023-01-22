@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-01-16 21:26:57
- * @LastEditTime: 2023-01-22 15:06:20
+ * @LastEditTime: 2023-01-22 17:44:28
  * @LastEditors: fantiga
  * @FilePath: /hackernews-list-react-ts/utils/common.ts
  */
@@ -17,11 +17,11 @@ export const fetcher = (url: RequestInfo | URL) => fetch(url).then((res) => res.
  * @description: Get data asynchronously / 异步获取数据
  * @return {*}
  */
-const getStoriesData = async (limit: number): Promise<TStory[]> => {
+const getStoriesData = async (start: number, limit: number): Promise<TStory[]> => {
   const ids = await fetcher(API + "topstories.json?print=pretty");
 
   return await Promise.all(
-    ids.slice(0, limit).map(
+    ids.slice(start, limit).map(
       async (id: number): Promise<TStory> => {
         return await fetcher(API + `item/${id}.json?print=pretty`);
       }
@@ -29,4 +29,4 @@ const getStoriesData = async (limit: number): Promise<TStory[]> => {
   );
 };
 
-export const useStories = (count: number) => useSWR('stories', () => getStoriesData(count));
+export const useStories = (start: number, limit: number) => useSWR('stories', () => getStoriesData(start, limit));
