@@ -1,46 +1,52 @@
-# hackernews-list-react-ts
+# hackernews-list-nextjs-react-ts
 
 **English** | [简体中文](README.zh-CN.md)
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-- [hackernews-list-react-ts](#hackernews-list-react-ts)
-  - [Subject](#subject)
+- [hackernews-list-nextjs-react-ts](#hackernews-list-nextjs-react-ts)
+  - [Architecture](#architecture)
   - [Requirements](#requirements)
-    - [Requirements for UI](#requirements-for-ui)
-    - [Requirements about Tech](#requirements-about-tech)
-  - [API Spec](#api-spec)
-    - [Example](#example)
+  - [Strategies](#strategies)
+  - [Maintainers](#maintainers)
+  - [License](#license)
 
-## Subject
+Welcome.
 
-To display HackerNews info as list.
+This is an infinite loading demo generated from the HackerNews API using NextJS, React and styled-components.
+
+[Demo](https://fantiga.github.io/hackernews-list-nextjs-react-ts/out/)
+
+## Architecture
+
+ - The main Javascript framework is [React 18.2](https://reactjs.org/) version.
+ - The main React framework is [NextJS 13.1.2](https://nextjs.org/) version.
+ - Use [styled-components 5.3.6](https://styled-components.com/) for style management.
+ - Use [react-intersection-observer 9.4.1](https://github.com/thebuilder/react-intersection-observer#readme) to monitor Element entering or leaving Viewport.
+ - It follows the type checking and syntax specifications of [Typescript](https://www.typescriptlang.org/) and [ESLint](https://eslint.org/).
 
 ## Requirements
 
-### Requirements for UI
+  1. Display a list of HackerNews top stories(100news).
+  2. Before data finishes fetching, show a loader.
+  3. Each news post has a link to navigate to the actual page as a new tab.
+  4. Infinite scrolling or Pagination.
+  5. Animations.
 
-1. Display a list of HackerNews top stories(100news).
-2. Before data finishes fetching, please show a loader.
-3. Each news post has a link to navigate to the actual page as a new tab.
-4. Infinite scrolling or Pagination.
-5. Animations.
-6. Unit testing, snapshot testing.
+## Strategies
 
-### Requirements about Tech
+  1. `/pages/index.tsx` is an entry file.
+  2. `/pages/_document.tsx` introduces a webpage public header file `/components/Header.tsx`.
+  3. `/components/List.tsx` is a list page.
+  4. `/components/Loading.tsx` Loading page with simple animation applied.
+  5. The `/utils/` directory puts the public section. `common.ts` contains some constants used and methods for asynchronously obtaining data, and `interface.ts` defines the types used by all components.
+  6. Through the specified API `https://github.com/HackerNews/API`, the returned data will be rendered according to the requirements.
+  7. Cumulative time spent: about `40+` hours.
 
-1. Use `React`. If you would like, you can use any meta framework of your choice (eg. `Next.js`).
-2. Use `TypeScript`.
-3. **DO NOT** use a UI library (eg. `Material UI`, `Bootstrap`). You can use a CSS framework if you would like(eg. `styled-component`, `css-in-module`, `Tailwind`, etc).
+## Maintainers
 
-## API Spec
+[@FantiGA](https://github.com/FantiGA)
 
-> https://github.com/HackerNews/API
+## License
 
-### Example
-
-- top stories api
-  > https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
-- fetch individual story
-  > https://hacker-news.firebaseio.com/v0/item/{itemId}.json?print=pretty
-  > https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+[MIT](LICENSE)  © 2023 [@FantiGA](https://github.com/FantiGA)

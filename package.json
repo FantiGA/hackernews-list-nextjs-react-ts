@@ -1,5 +1,5 @@
 {
-  "name": "hackernews-list-react-ts",
+  "name": "hackernews-list-nextjs-react-ts",
   "version": "0.1.0",
   "private": true,
   "keywords": [],
@@ -11,7 +11,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@next/font": "^13.1.5",

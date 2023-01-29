@@ -1,46 +1,52 @@
-# hackernews-list-react-ts
+# hackernews-list-nextjs-react-ts
 
 [English](README.md) | **简体中文**
 
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-- [hackernews-list-react-ts](#hackernews-list-react-ts)
-  - [主题](#主题)
+- [hackernews-list-nextjs-react-ts](#hackernews-list-nextjs-react-ts)
+  - [架构](#架构)
   - [要求](#要求)
-    - [用户界面要求](#用户界面要求)
-    - [技术要求](#技术要求)
-  - [API 规范](#api-规范)
-    - [例子](#例子)
+  - [策略](#策略)
+  - [维护者](#维护者)
+  - [许可证](#许可证)
 
-## 主题
+欢迎。
 
-将 HackerNews 信息显示为列表。
+这是一个使用 NextJS、 React 和 styled-components 根据 HackerNews API 生成的无限加载的演示。
+
+[演示](https://fantiga.github.io/hackernews-list-nextjs-react-ts/out/)
+
+## 架构
+
+  - 主要的 Javascript 框架是 [React 18.2](https://reactjs.org/) 版本。
+  - 主要的 React 框架是 [NextJS 13.1.2](https://nextjs.org/) 版本。
+  - 使用 [styled-components 5.3.6](https://styled-components.com/) 来进行样式的管理。
+  - 使用 [react-intersection-observer 9.4.1](https://github.com/thebuilder/react-intersection-observer#readme) 来监视 Element 进入或离开 Viewport 。
+  - 它遵循 `Typescript` 和 `ESLint` 的类型检查和语法规范。
 
 ## 要求
 
-### 用户界面要求
+  1. 显示 HackerNews 头条新闻列表（100 条新闻）。
+  2. 在数据完成获取之前，显示一个 Loading。
+  3. 每篇新闻文章都有一个链接，可以导航到作为新选项卡的实际页面。
+  4. 无限滚动或分页。
+  5. 动画。
 
-1. 显示 HackerNews 头条新闻列表（100 条新闻）。
-2. 在数据完成获取之前，请显示一个加载器。
-3. 每篇新闻文章都有一个链接，可以导航到作为新选项卡的实际页面。
-4. 无限滚动或分页。
-5. 动画。
-6. 单元测试、快照测试。
+## 策略
 
-### 技术要求
+  1. `/pages/index.tsx` 是入口文件。
+  2. `/pages/_document.tsx` 引入了一个网页公共头部文件 `/components/Header.tsx`。
+  3. `/components/List.tsx` 是列表页面。
+  4. `/components/Loading.tsx` Loading 页面应用了简单的动画。
+  5. `/utils/` 目录放入了公共的部分。`common.ts` 包含了用到的一些常量和异步获取数据的方法，`interface.ts` 则定义了所有组件用到的类型。
+  6.  通过指定的 API `https://github.com/HackerNews/API` ，将返回的数据根据要求渲染页面。
+  7.  累计花费时间：约 `40+` 小时。
 
-1. 使用 `React`。如果愿意，您可以使用您选择的任何元框架（例如 `Next.js`）。
-2. 使用 `TypeScript`。
-3. **不要**使用 UI 库（例如 `Material UI`, `Bootstrap`）。如果您愿意，可以使用 CSS 框架（例如，`styled-component`、`css-in-module`、`Tailwind` 等）。
+## 维护者
 
-## API 规范
+[@FantiGA](https://github.com/FantiGA)
 
-> https://github.com/HackerNews/API
+## 许可证
 
-### 例子
-
-- 头条新闻
-  > https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty
-- 获取单个新闻
-  > https://hacker-news.firebaseio.com/v0/item/{itemId}.json?print=pretty
-  > https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty
+[MIT](LICENSE)  © 2023 [@FantiGA](https://github.com/FantiGA)
