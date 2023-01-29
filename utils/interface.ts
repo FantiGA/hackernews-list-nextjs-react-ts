@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-01-15 19:54:47
- * @LastEditTime: 2023-01-22 17:44:07
+ * @LastEditTime: 2023-01-29 22:10:38
  * @LastEditors: fantiga
  * @FilePath: /hackernews-list-react-ts/utils/interface.ts
  */
@@ -14,12 +14,6 @@ export interface IHeader {
 
 export interface IError {
   message?: string;
-}
-
-export interface IList {
-  fallback?: any;
-  start?: number;
-  limit?: number;
 }
 
 export type TStory = {

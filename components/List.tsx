@@ -1,18 +1,17 @@
 /*
  * @Author: fantiga
  * @Date: 2023-01-15 21:21:06
- * @LastEditTime: 2023-01-22 21:20:41
+ * @LastEditTime: 2023-01-29 22:26:46
  * @LastEditors: fantiga
  * @FilePath: /hackernews-list-react-ts/components/List.tsx
  */
 
-import { FC, memo, useEffect, useMemo, useRef, useState } from "react";
-import { SWRConfig } from "swr";
+import { FC, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useStories } from "@utils/common";
-import { IList, TStory } from "@utils/interface";
-import Error from "./Error";
+import { API, fetcher, PAGE_SIZE } from "@utils/common";
+import { TStory } from "@utils/interface";
 import Loading from "./Loading";
+import { useInView } from "react-intersection-observer";
 
 const Link = styled.a`
   display: flex;
@@ -23,85 +22,81 @@ const Link = styled.a`
   }
 `;
 
-const List: FC<IList> = memo(({ fallback }) => {
-  const { data: stories, error, isLoading } = useStories(0, 20);
-  if (error) return <Error message="Failed to load" />;
-  const bottomDomRef = useRef<HTMLDivElement>(null);
+const List: FC = () => {
+  const [storyList, setStoryList] = useState<TStory[]>([]);
+  const [page, setPage] = useState<number>(0);
+  const [totalNum, setTotalNum] = useState<number>(0);
+  const [showLoading, setShowLoading] = useState<boolean>(true);
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      function (entries) {
-        // If not visible
-        if (entries[0]!.intersectionRatio <= 0) {
-          bottomDomRef.current!.style.display = "none";
-        };
-        console.log('Loaded new items');
-        bottomDomRef.current!.style.display = "";
-      }
+  /**
+   * Get data asynchronously / 异步获取数据
+   * @param {number} page
+   * @param {number} limit
+   * @return {Promise<TStory[]>}
+   */
+  const getStoriesData = async (page: number = 0, limit: number = PAGE_SIZE): Promise<TStory[]> => {
+    const ids = await fetcher(API + "topstories.json?print=pretty");
+    // Calculate the total number of pages / 计算总页数
+    setTotalNum(Math.ceil(ids.length / limit));
+
+    return await Promise.all(
+      ids.slice(limit * page, limit * page + limit).map(
+        async (id: number): Promise<TStory> => {
+          return await fetcher(API + `item/${id}.json?print=pretty`);
+        }
+      )
     );
-
-    // start observing
-    observer.observe(bottomDomRef.current!);
-
-    return () => {
-      // stop observing
-      observer.unobserve(bottomDomRef.current!);
-
-      // close observer
-      observer.disconnect();
-    };
-  }, [stories, error, isLoading]);
-
-  const homeInfo: TStory[] = [...stories!];
-  // Rendered component data
-  const [compList, setCompList] = useState<TStory[]>([]);
-
-  const splitGroups = (homeList: TStory[], pageSize: number): TStory[] => {
-    let groupsTemp: TStory[] = [];
-    for (let i = 0; i < homeList.length; i += pageSize) {
-      groupsTemp = [...groupsTemp, ...homeList.slice(i, i + pageSize)];
-    }
-    return groupsTemp;
   };
 
-  const compGroups: TStory[] = useMemo(() => splitGroups(homeInfo, 3), [homeInfo]);
-  const groupCount = compGroups.length;
-  const [groupIdx, setGroupIdx] = useState(0);
-
-
-  const scrollRenderHandler = (): void => {
-    const rect = bottomDomRef.current?.getBoundingClientRect();
-    const top = rect ? rect.top : 0;
-    const clientHeight = document.documentElement.clientHeight
-      || document.body.clientHeight;
-    if (top < clientHeight && groupIdx < groupCount) {
-      setCompList([...compList, compGroups[groupIdx]]);
-      setGroupIdx(groupIdx + 1);
-    }
-  };
-
+  /**
+   * Responding to scrolling side effects, if scrolling to the bottom, `page + 1`.
+   * 响应滚动的副作用，如果滚到底了，`page + 1`。
+   * @return {*}
+   */
   useEffect(() => {
-    document.addEventListener('scroll', scrollRenderHandler);
-    return (): void => {
-      document.removeEventListener('scroll', scrollRenderHandler);
-    };
-  }, [scrollRenderHandler]);
+    if (inView && page < totalNum) {
+      setPage(page + 1);
+    }
+  }, [inView]);
+
+  /**
+   * Respond to side effects of `page` changes.
+   * If the `page` changes, get the content of the `page` and merge it into the `storyList`.
+   * 响应 `page` 变化的副作用。
+   * 如果 `page` 变化了，获取第 `page` 页的内容，并合并进 `storyList`。
+   */
+  useEffect(() => {
+    if (page <= totalNum) {
+      getStoriesData(page).then((res) => {
+        setShowLoading(true);
+        if (!res) {
+          setShowLoading(false);
+          return;
+        }
+        setStoryList([...storyList, ...res]);
+      });
+    }
+    setShowLoading(false);
+  }, [page]);
 
   return (
-    <SWRConfig value={{ fallback }}>
+    <>
       <ol>
         {
-          stories?.map((story) => {
+          storyList.map((story) => {
             return <li key={story.id}><Link href={story.url} target="_blank">{story.title}</Link></li>;
           })
         }
       </ol>
 
-      <div ref={bottomDomRef}>
-        <Loading />
+      <div ref={ref}>
+        {!showLoading ? <Loading /> : ""}
       </div>
-    </SWRConfig>
+    </>
   );
-});
+};
 
 export default List;
