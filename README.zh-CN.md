@@ -15,7 +15,7 @@
 
 这是一个使用 NextJS、 React 和 styled-components 根据 HackerNews API 生成的无限加载的演示。
 
-[演示](https://fantiga.github.io/hackernews-list-nextjs-react-ts/out/)
+[演示](https://fantiga.github.io/hackernews-list-nextjs-react-ts/)
 
 ## 架构
 

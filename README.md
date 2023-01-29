@@ -15,7 +15,7 @@ Welcome.
 
 This is an infinite loading demo generated from the HackerNews API using NextJS, React and styled-components.
 
-[Demo](https://fantiga.github.io/hackernews-list-nextjs-react-ts/out/)
+[Demo](https://fantiga.github.io/hackernews-list-nextjs-react-ts/)
 
 ## Architecture
 
