@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-01-15 19:45:05
- * @LastEditTime: 2023-01-29 22:24:32
+ * @LastEditTime: 2023-02-04 11:24:48
  * @LastEditors: fantiga
  * @FilePath: /hackernews-list-react-ts/pages/index.tsx
  */
@@ -33,7 +33,7 @@ const Home: FC = () => {
       <Header />
       <Container>
         <Wrapper>
-          <TitleUI>HackerNews List React TS</TitleUI>
+          <TitleUI>HackerNews List NextJS/React TS</TitleUI>
           <List />
         </Wrapper>
       </Container>
